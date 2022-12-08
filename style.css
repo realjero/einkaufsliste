@@ -1,0 +1,22 @@
+body {
+    background: #ecf0f1;
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+}
+
+div {
+    background: #34495e;
+    min-width: 300px;
+    width: 50%;
+    height: 100vh;
+
+}
+
+footer {
+    display: table-cell;
+    vertical-align: bottom;
+}

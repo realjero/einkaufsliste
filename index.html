@@ -6,23 +6,56 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
+    <div id="main_section">
         <header>
             <h1>Einkaufsliste</h1>
+            <p>Jerome Habanz WS22/23</p>
         </header>
+
+        <br><br>
         <hr>
+        <br><br>
+
         <section>
             <form>
-                <label>User: </label>
-                <input type="text"><br>
-                <label>Actions: </label>
-                <input type="submit" value="new entry">
-                <input type="submit" value="save entries">
+                <label for="user">User: </label>
+                <input type="text" id="user" name="firstname" placeholder="Your name..">
+                <input type="submit" value="New" class="main_button">
+                <input type="submit" value="Save" class="main_button">
             </form>
+
+            <table>
+                <tr>
+                    <th>Wer</th>
+                    <th>Was</th>
+                    <th>Wo</th>
+                    <th>Wann</th>
+                    <th>Update/Back/Delete</th>
+                </tr>
+                <tr>
+                    <td contenteditable>Jerome</td>
+                    <td contenteditable>Das</td>
+                    <td contenteditable>Hier</td>
+                    <td contenteditable>4.20</td>
+                    <td><input type="submit" value="U" class="editable">
+                        <input type="submit" value="B" class="editable">
+                        <input type="submit" value="X" class="editable"></td>
+                </tr>
+                <tr>
+                    <td contenteditable>Jerome</td>
+                    <td contenteditable>Das</td>
+                    <td contenteditable>Hier</td>
+                    <td contenteditable>4.20</td>
+                </tr>
+            </table>
         </section>
+
+        <br><br>
         <hr>
+        <br><br>
+
         <footer>
-            <p>By Jerome Habanz</p>
+            <p>copyright</p>
         </footer>
     </div>
 </body>

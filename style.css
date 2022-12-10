@@ -1,22 +1,70 @@
 body {
-    background: #ecf0f1;
-    min-height: 100vh;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: #95a5a6;
+    height: 100%;
+    width: 100%;
     margin: 0px;
+    display: flex;
+    justify-content: center;
 }
 
-div {
-    background: #34495e;
-    min-width: 300px;
+#main_section {
+    background: #2c3e50;
     width: 50%;
-    height: 100vh;
+    margin-top: 20px;
+    padding: 5vh;
+    border-radius: 4px;
+}
 
+header {
+    text-align: center;
+    padding: 0px;
 }
 
 footer {
-    display: table-cell;
-    vertical-align: bottom;
+    text-align: center;
+}
+
+h1, p, td, th, label {
+    margin: 0px;
+    color: white;
+    font-family: AnjaliOldLipi;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    text-align: center;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.main_button {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.editable {
+    background-color: #4CAF50;
+    color: white;
+    margin: 8px 0;
+    padding: 4px 7px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="../styles/style.css">
+    <script src="scripts/client.js"></script>
 </head>
 <body>
     <div id="main_section">
@@ -20,33 +21,12 @@
             <form>
                 <label for="user">User: </label>
                 <input type="text" id="user" name="name" placeholder="Your name..">
-                <input type="submit" value="New" class="main_button">
-                <input type="submit" value="Save" class="main_button">
+                <input type="submit" value="New" class="main_button" id="new">
+                <input type="submit" value="Save" class="main_button" id="save">
             </form>
 
-            <table>
-                <tr>
-                    <th>Wer</th>
-                    <th>Was</th>
-                    <th>Wo</th>
-                    <th>Wann</th>
-                    <th>Update/Back/Delete</th>
-                </tr>
-                <tr>
-                    <td contenteditable>Jerome</td>
-                    <td contenteditable>Das</td>
-                    <td contenteditable>Hier</td>
-                    <td contenteditable>4.20</td>
-                    <td><input type="submit" value="U" class="editable">
-                        <input type="submit" value="B" class="editable">
-                        <input type="submit" value="X" class="editable"></td>
-                </tr>
-                <tr>
-                    <td contenteditable>Jerome</td>
-                    <td contenteditable>Das</td>
-                    <td contenteditable>Hier</td>
-                    <td contenteditable>4.20</td>
-                </tr>
+            <table id="table_items">
+
             </table>
         </section>
 

@@ -1,0 +1,33 @@
+### get table
+GET http://localhost:8080/get
+
+### new
+POST http://localhost:8080/new
+Content-Type: application/json
+
+{
+  "name": "max"
+}
+
+### save
+GET http://localhost:8080/save
+
+### update
+POST http://localhost:8080/update
+Content-Type: application/json
+
+{
+  "id": 0,
+  "wer":"jerome",
+  "was":"das",
+  "wo":"hier",
+  "wann":"2022-12-13T11:46:30.815Z"
+}
+
+### delete
+POST http://localhost:8080/remove
+Content-Type: application/json
+
+{
+  "id": 0
+}

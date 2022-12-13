@@ -1,3 +1,7 @@
+const fs = require('fs');
+const express = require('express');
+const server = express();
+
 class Eintrag {
     public wer: string;
     public was: string;
@@ -43,4 +47,59 @@ class Einkaufsliste {
             this.liste[index].wo = u.wo;
         }
     }
+
+    getAsHTML(): string {
+        let html: string;
+        html = '<table>' +
+            '<tr>' +
+            '<th>Wer</th>' +
+            '<th>Was</th>' +
+            '<th>Wo</th>' +
+            '<th>Wann</th>' +
+            '<th>Update/Back/Delete</th>' +
+            '</tr>'
+        this.liste.forEach(x => {
+            html = html + '<tr>' +
+                '<td contenteditable>' + x.was + '</td>' +
+                '<td contenteditable>' + x.wer + '</td>' +
+                '<td contenteditable>' + x.wo + '</td>' +
+                '<td contenteditable>' + x.wann + '</td>' +
+                '<td></td>' +
+                '</tr>'
+        });
+        html = html + '</table>'
+        return html;
+    }
 }
+
+
+server.use("/script", express.static(__dirname + "/script"));
+server.use("/styles", express.static(__dirname + "/styles"));
+server.use(express.json());
+
+server.get('/', (req, res) => {
+    res.status(200);
+    res.sendFile(__dirname + "/html/index.html");
+});
+
+server.get('/new', (req, res) => {
+    res.status(200);
+});
+
+server.get('/save', (req, res) => {
+    res.status(200);
+});
+
+server.post('/update', (req, res) => {
+    res.status(200);
+});
+
+server.get('/back', (req, res) => {
+    res.status(200);
+});
+
+server.post('/delete', (req, res) => {
+    res.status(200);
+});
+
+server.listen('8080');

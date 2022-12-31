@@ -47,14 +47,16 @@ function show_button(event) {
     event.preventDefault();
     if(!editing) {
         if(event.target.parentElement.tagName === 'TR') {
-            editing = true;
             const index = event.target.parentElement.rowIndex;
-            document.getElementById("button_holder" + index).innerHTML = buttons;
-            document.getElementById("table_element" + index + "0").contentEditable = 'true';
-            document.getElementById("table_element" + index + "1").contentEditable = 'true';
-            document.getElementById("table_element" + index + "2").contentEditable = 'true';
-            document.getElementById("table_element" + index + "3").contentEditable = 'true';
-            event.target.focus();
+            if(index !== 0) {
+                editing = true;
+                document.getElementById("button_holder" + index).innerHTML = buttons;
+                document.getElementById("table_element" + index + "0").contentEditable = 'true';
+                document.getElementById("table_element" + index + "1").contentEditable = 'true';
+                document.getElementById("table_element" + index + "2").contentEditable = 'true';
+                document.getElementById("table_element" + index + "3").contentEditable = 'true';
+                event.target.focus();
+            }
         }
     }
 }
@@ -112,6 +114,7 @@ const buttons = '<button type="button" class="editable" id="update">U</button>' 
     '<button type="button" class="editable" id="delete">X</button>';
 
 document.addEventListener('DOMContentLoaded', () => {
+    loadList();
     document.getElementById("new").addEventListener('click', (event) => {
         if(!editing) {
             const user_input = document.getElementById("user") as HTMLInputElement;

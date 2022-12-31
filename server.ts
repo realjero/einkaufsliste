@@ -12,32 +12,28 @@ class Eintrag {
         this.wer = wer;
         this.was = was;
         this.wo = wo;
-        //this.wann = wann;
+        this.setDate(wann);
     }
 
     getDate(): string {
-        var day = new Date(this.wann);
-        console.log(day === !isNaN());
-        if(this.wann === null) {
-            return "";
-        }
-        return [day.getDate(),
-                day.getMonth()+1,
-                day.getFullYear()].join('.')+' '+
-            [day.getHours(),
-                day.getMinutes()].join(':');
+        if(this.wann === null) return "";
+        return [this.wann.getDate(),
+                this.wann.getMonth()+1,
+                this.wann.getFullYear()].join('.')+' '+
+            [this.wann.getHours(),
+                this.wann.getMinutes()].join(':');
     }
 
-    setDate(d: string) {
-        console.log(d)
-        let datetime = d.split(".");
-        let date = new Date();
-        date.setDate(Number(datetime[0]));
-        date.setMonth(Number(datetime[1]));
-        date.setFullYear(Number(datetime[2]));
-        date.setHours(Number(datetime[3]));
-        date.setMinutes(Number(datetime[4]));
-        this.wann = date;
+    setDate(datetime: string) {
+        console.log(datetime);
+        if(datetime !== null && datetime.match(/\d\d?\.\d\d?\.\d\d\d\d \d\d:\d\d.*/)) {
+            const [date, time] = datetime.replace("<br>", "").split(" ");
+            const [day, month, year] = date.split(".");
+            const [hours, minutes] = time.split(":");
+            this.wann = new Date(+year, +month - 1, +day, +hours, +minutes);
+        } else {
+            this.wann = null;
+        }
     }
 }
 
@@ -45,10 +41,6 @@ class Einkaufsliste {
     private list: Eintrag[] = [];
 
     constructor() {
-    }
-
-    getItems(): Eintrag[] {
-        return this.list;
     }
 
     addItem(wer: string, was: string, wo: string, wann: string): void {
@@ -90,6 +82,13 @@ class Einkaufsliste {
     }
 
     saveJSON(): void {
+        Date.prototype.toJSON = function () {
+            return [this.getDate(),
+                    this.getMonth()+1,
+                    this.getFullYear()].join('.')+' '+
+                [this.getHours(),
+                    this.getMinutes()].join(':');
+        }
        fs.writeFile("data.json", JSON.stringify(this.list), (err) => {
            if(err) console.log("Cannot Save JSON");
        });
@@ -132,8 +131,7 @@ server.get('/save', (req, res) => {
 });
 
 server.post('/update', (req, res) => {
-    const eintrag = new Eintrag(req.body.wer, req.body.was, req.body.wo, "");
-    eintrag.setDate(req.body.wann);
+    const eintrag = new Eintrag(req.body.wer, req.body.was, req.body.wo, req.body.wann);
     ek.updateItem(req.body.id, eintrag);
     ek.saveJSON();
     res.status(200);
